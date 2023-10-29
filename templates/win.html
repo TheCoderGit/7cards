@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="main-board">
+
+    <p>{{ win }}</p>
+
+</div>
+    
+<form action="/start/" method="post">
+  <button name="Play" type="submit" class="start-button">Start New Game</button>
+</form>
+
+
+{% endblock %}

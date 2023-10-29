@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="main-board">
+    <table style="width: 90%; height: 300px;">
+        <tr>
+            <td>{{ c1_1 }}</td>
+            <td>{{ c1_2 }}</td>
+            <td>{{ c1_3 }}</td>
+            <td>{{ c1_4 }}</td>
+            <td>{{ c1_5 }}</td>
+            <td>{{ c1_6 }}</td>
+            <td>{{ c1_7 }}</td>
+            <td class="button-cell">
+              <form action="/" method="post">
+                <input name="top" type="submit" class="top-button" value="👈"/>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>{{ c2_1 }}</td>
+            <td>{{ c2_2 }}</td>
+            <td>{{ c2_3 }}</td>
+            <td>{{ c2_4 }}</td>
+            <td>{{ c2_5 }}</td>
+            <td>{{ c2_6 }}</td>
+            <td>{{ c2_7 }}</td>
+            <td class="button-cell">
+              <form action="/" method="post">
+                <input name="middle" type="submit" class="middle-button" value="👈"/>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>{{ c3_1 }}</td>
+            <td>{{ c3_2 }}</td>
+            <td>{{ c3_3 }}</td>
+            <td>{{ c3_4 }}</td>
+            <td>{{ c3_5 }}</td>
+            <td>{{ c3_6 }}</td>
+            <td>{{ c3_7 }}</td>
+            <td class="button-cell">
+              <form action="/" method="post">
+                <input name="bottom" type="submit" class="bottom-button" value="👈">
+              </form>
+            </td>
+          </tr>
+    
+    </table>
+
+</div>
+    
+<form action="/start/" method="post">
+  <button name="Play" type="submit" class="start-button">Start New Game</input>
+</form>
+
+
+{% endblock %}
