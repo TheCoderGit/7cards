@@ -54,6 +54,7 @@ body {
 }
 
 td{
+  width: 30px;
   align-content: center;
   border-radius: 10px;
   border-style: outset;

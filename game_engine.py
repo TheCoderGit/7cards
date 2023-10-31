@@ -52,50 +52,69 @@ class Engine:
             pass
         self.trials += 1
         if selected == 'top':
-            return playing_cards[7:15]+playing_cards[:7]+playing_cards[15:]
+            x = playing_cards[7:14]+playing_cards[:7]+playing_cards[14:]
+            return x
         if selected == 'middle':
-            return playing_cards
+            x = playing_cards
+            return x
         if selected == 'bottom':
-            return playing_cards[7:15]+playing_cards[15:]+playing_cards[:7]
-
+            x = playing_cards[7:14]+playing_cards[14:]+playing_cards[:7]
+            return x
     def redistripute(self,playing_cards: list):
         new_list = []
         
         for i in range(3):
             while (i < 21):
-                print(i)
                 new_list.append(playing_cards[i])
                 i += 3
-        print('new list ==> ', len(new_list))
         return new_list
 
     def print_card_list(self,playing_card_list):
         for card in playing_card_list:
             print(card.value, card.type.value)
 
+    def card_to_text(self,card:Card):
+        num = card.value
+        figure = card.type.value
+        if num == 1:
+            num = "A"
+        if num == 11:
+            num = "🫅🏻"
+        if num == 12:
+            num = "👸🏻"
+        if num == 13:
+            num = "🤴🏻"
+        return f"{num}\n{figure}"
+
     def face_values(self,game_cards):
+        res = []
+        for card in game_cards:
+            x = self.card_to_text(card)
+            res.append(x)
+        
+            
         return dict(
-        c1_1=f"{game_cards[0].value}\n{game_cards[0].type.value}",
-        c1_2=f"{game_cards[1].value}\n{game_cards[1].type.value}",
-        c1_3=f"{game_cards[2].value}\n{game_cards[2].type.value}",
-        c1_4=f"{game_cards[3].value}\n{game_cards[3].type.value}",
-        c1_5=f"{game_cards[4].value}\n{game_cards[4].type.value}",
-        c1_6=f"{game_cards[5].value}\n{game_cards[5].type.value}",
-        c1_7=f"{game_cards[6].value}\n{game_cards[6].type.value}",
-        c2_1=f"{game_cards[7].value}\n{game_cards[7].type.value}",
-        c2_2=f"{game_cards[8].value}\n{game_cards[8].type.value}",
-        c2_3=f"{game_cards[9].value}\n{game_cards[9].type.value}",
-        c2_4=f"{game_cards[10].value}\n{game_cards[10].type.value}",
-        c2_5=f"{game_cards[11].value}\n{game_cards[11].type.value}",
-        c2_6=f"{game_cards[12].value}\n{game_cards[12].type.value}",
-        c2_7=f"{game_cards[13].value}\n{game_cards[13].type.value}",
-        c3_1=f"{game_cards[14].value}\n{game_cards[14].type.value}",
-        c3_2=f"{game_cards[15].value}\n{game_cards[15].type.value}",
-        c3_3=f"{game_cards[16].value}\n{game_cards[16].type.value}",
-        c3_4=f"{game_cards[17].value}\n{game_cards[17].type.value}",
-        c3_5=f"{game_cards[18].value}\n{game_cards[18].type.value}",
-        c3_6=f"{game_cards[19].value}\n{game_cards[19].type.value}",
-        c3_7=f"{game_cards[20].value}\n{game_cards[20].type.value}",)
+        c1_1=res[0],
+        c1_2=res[1],
+        c1_3=res[2],
+        c1_4=res[3],
+        c1_5=res[4],
+        c1_6=res[5],
+        c1_7=res[6],
+        c2_1=res[7],
+        c2_2=res[8],
+        c2_3=res[9],
+        c2_4=res[10],
+        c2_5=res[11],
+        c2_6=res[12],
+        c2_7=res[13],
+        c3_1=res[14],
+        c3_2=res[15],
+        c3_3=res[16],
+        c3_4=res[17],
+        c3_5=res[18],
+        c3_6=res[19],
+        c3_7=res[20],)
 
     def selected_card(self,playing_cards):
-        return playing_cards[11]
+        return self.card_to_text(playing_cards[10])

@@ -14,64 +14,48 @@ def index():
     if request.method == 'POST':
         if request.form.get('top'):
             if engine.trials != 2:
-                print('top pressed')
-                print('create new stack')
                 new_stack = engine.collect_cards(game_cards,'top')
-                print('collect the cards')
                 redist = engine.redistripute(new_stack)
                 game_cards = redist
-                print('redistribute')
+                engine.print_card_list(game_cards)
                 values = engine.face_values(redist)
-                print('prepare the face values')
                 return render_template('index.html', **values)
             elif engine.trials == 2:
                 new_stack = engine.collect_cards(game_cards,'top')
                 game_cards = new_stack
-                selected_card = engine.selected_card(game_cards)
                 engine.trials = 0
-                return render_template('win.html',win=f"{selected_card.value}\n{selected_card.type.value}")
+                return render_template('win.html',win=f"{engine.selected_card(game_cards)}")
         elif request.form.get('middle'):
             if engine.trials != 2:
-                print('middle pressed')
-                print('create new stack')
                 new_stack = engine.collect_cards(game_cards,'middle')
-                print('collect the cards')
                 redist = engine.redistripute(new_stack)
                 game_cards = redist
-                print('redistribute')
+                engine.print_card_list(game_cards)
                 values = engine.face_values(redist)
-                print('prepare the face values')
                 return render_template('index.html', **values)
             elif engine.trials == 2:
                 new_stack = engine.collect_cards(game_cards,'middle')
                 game_cards = new_stack
-                selected_card = engine.selected_card(game_cards)
+                
                 engine.trials = 0
-                return render_template('win.html',win=f"{selected_card.value}\n{selected_card.type.value}")
+                return render_template('win.html',win=f"{engine.selected_card(game_cards)}")
         elif request.form.get('bottom'):
             if engine.trials != 2:
-                print('bottom pressed')
-                print('create new stack')
                 new_stack = engine.collect_cards(game_cards,'bottom')
-                print('collect the cards')
                 redist = engine.redistripute(new_stack)
                 game_cards = redist
-                print('redistribute')
+                engine.print_card_list(game_cards)
                 values = engine.face_values(redist)
-                print('prepare the face values')
                 return render_template('index.html', **values)
             elif engine.trials == 2:
                 new_stack = engine.collect_cards(game_cards,'bottom')
                 game_cards = new_stack
-                selected_card = engine.selected_card(game_cards)
                 engine.trials = 0
-                return render_template('win.html',win=f"{selected_card.value}\n{selected_card.type.value}")
+                return render_template('win.html',win=f"{engine.selected_card(game_cards)}")
 
 
     game_cards = engine.start_new_game()
-    print('start new cards for the game')
     values = engine.face_values(game_cards)
-    print('prepare the face values')
     return render_template('index.html', **values)
 
 @app.route('/start/', methods=['POST'])
